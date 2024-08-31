@@ -22,7 +22,7 @@ const HeaderOfChatContent = () => {
       {/* Search & call & others */}
       <div className="flex-1 mr-10 flex justify-end gap-3">
         <IoIosSearch className="text-[22px] stroke-1 my-auto mr-2 fill-[#adb5bd] cursor-pointer" />
-        <BsTelephone className="text-[18px] my-auto mr-2 text-[#adb5bd] cursor-pointer" />
+        <BsTelephone className="text-[18px] my-auto stroke-[0.5] mr-2 text-[#adb5bd] cursor-pointer" />
         <BsThreeDotsVertical className="text-[#adb5bd] text-[20px]" />
       </div>
     </div>
