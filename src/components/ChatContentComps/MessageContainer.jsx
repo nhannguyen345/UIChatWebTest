@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+import { BsThreeDots } from "react-icons/bs";
+import PopoverMenuOptionsMessage from "./PopoverMenuOptionsMessage";
+import TextMessageRightSide from "./TextMessageRightSide";
+import TextMessageLeftSide from "./TextMessageLeftSide";
 const ListMessage = [
   {
+    messId: 1,
     senderId: "1",
     receiverId: "2",
     contentType: "text",
@@ -10,6 +15,7 @@ const ListMessage = [
     sendAt: "9:12am",
   },
   {
+    messId: 2,
     senderId: "2",
     receiverId: "1",
     contentType: "text",
@@ -19,6 +25,7 @@ const ListMessage = [
     sendAt: "9:12am",
   },
   {
+    messId: 3,
     senderId: "2",
     receiverId: "1",
     contentType: "text",
@@ -28,6 +35,7 @@ const ListMessage = [
     sendAt: "9:12am",
   },
   {
+    messId: 4,
     senderId: "1",
     receiverId: "2",
     contentType: "text",
@@ -36,6 +44,7 @@ const ListMessage = [
     sendAt: "9:12am",
   },
   {
+    messId: 5,
     senderId: "2",
     receiverId: "1",
     contentType: "file",
@@ -44,6 +53,7 @@ const ListMessage = [
     sendAt: "9:12am",
   },
   {
+    messId: 6,
     senderId: "2",
     receiverId: "1",
     contentType: "text",
@@ -53,39 +63,50 @@ const ListMessage = [
     sendAt: "9:12am",
   },
   {
+    messId: 7,
     senderId: "2",
     receiverId: "1",
     contentType: "file",
-    content: "baitap.png-hoatieu.png-cuadong.png",
+    content: "baitap.png",
     urlFile: "http://...",
     sendAt: "9:12am",
   },
 ];
 const MessageContainer = () => {
+  const [openMenuId, setOpenMenuId] = useState(null);
+
+  const toggleMenu = (idx) => {
+    if (openMenuId === idx) {
+      setOpenMenuId(null); // Đóng menu nếu nó đang mở
+    } else {
+      setOpenMenuId(idx); // Mở menu của mục này
+    }
+  };
+
   return (
     <div className="flex-1 w-full overflow-y-hidden custom-scrollbar hover:overflow-y-auto focus:overflow-y-auto">
       {ListMessage.map((item, idx) => {
         if (item.senderId === "1") {
           return (
-            <div className="w-full h-fit text-right my-[26px]" key={idx}>
-              <div className="inline-block text-left max-w-[400px] bg-[#665dfe] text-[#ffffff] mr-[20px] px-[36px] py-[16px] rounded-[20px]">
-                <span>{item.content}</span>
-              </div>
-            </div>
+            <TextMessageRightSide
+              item={item}
+              key={idx}
+              index={idx}
+              toggleMenu={toggleMenu}
+              openMenuId={openMenuId}
+            />
           );
-        } else
+        } else {
           return (
-            <div key={idx} className="w-full flex h-fit text-left my-[26px]">
-              <div className="inline-block relative text-left max-w-[400px] bg-[#f5f6fa] text-[#8094ae] ml-[30px] px-[36px] py-[16px] rounded-[20px]">
-                <span>{item.content}</span>
-                <img
-                  className="absolute -left-4 -bottom-4 h-[36px] w-[36px] object-cover box-content shadow-custom rounded-full my-auto"
-                  src="https://doot-light.react.themesbrand.com/static/media/avatar-3.6256d30dbaad2b8f4e60.jpg"
-                  alt=""
-                />
-              </div>
-            </div>
+            <TextMessageLeftSide
+              item={item}
+              key={idx}
+              index={idx}
+              toggleMenu={toggleMenu}
+              openMenuId={openMenuId}
+            />
           );
+        }
       })}
     </div>
   );
