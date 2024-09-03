@@ -1,14 +1,19 @@
-import ChatPage from "./components/ChatPage";
-import LeftBar from "./components/LeftBar";
-import ResponsiveMenu from "./components/ResponsiveMenu";
-
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import NoPage from "./pages/NoPage";
 function App() {
   return (
-    <div className="flex flex-row overflow-hidden w-screen max-sm:relative">
-      <ResponsiveMenu />
-      <LeftBar />
-      <ChatPage />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="*" element={<NoPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

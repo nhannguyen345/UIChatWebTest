@@ -6,7 +6,7 @@ const TextMessageRightSide = ({ item, index, toggleMenu, openMenuId }) => {
   return (
     <div className="w-full h-fit text-right my-[36px]">
       <div className="inline-block text-left max-w-[400px] bg-[#665dfe] text-[#ffffff] text-[14px] mr-[20px] px-[36px] py-[16px] rounded-[20px]">
-        <span>{item.content}</span>
+        <span className="text-[15px]">{item.content}</span>
       </div>
       <div className="relative h-fit flex justify-end items-center gap-2 mt-[6px] mr-[28px] text-[#adb5bd]">
         <BsThreeDots
