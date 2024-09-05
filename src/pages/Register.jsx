@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import BackgroundImage from "../assets/6764486_3433814.jpg";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { loginSchema } from "../schemas/validationSchema";
+import { registerSchema } from "../schemas/validationSchema";
 import { BsEye } from "react-icons/bs";
 import { BsEyeSlash } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const {
@@ -13,7 +14,7 @@ const Register = () => {
     formState: { errors },
     reset,
   } = useForm({
-    resolver: yupResolver(loginSchema),
+    resolver: yupResolver(registerSchema),
   });
 
   const onSubmitHandler = (data) => {
@@ -46,21 +47,34 @@ const Register = () => {
       >
         {/* username field */}
         <input
-          className="w-full h-[42px] py-[6px] px-[12px] mb-4 leading-[1.5] border border-[#ced4da] rounded bg-[#fff] outline-none"
+          {...register("username")}
+          className="w-full h-[42px] py-[6px] px-[12px] leading-[1.5] border border-[#ced4da] rounded bg-[#fff] outline-none"
           type="text"
           placeholder="Enter your name"
         />
+        {errors.username && (
+          <p className="px-2 text-left text-xs italic text-red-500">
+            {errors.username.message}
+          </p>
+        )}
 
         {/* email field */}
         <input
-          className="w-full h-[42px] py-[6px] px-[12px] mb-4 leading-[1.5] border border-[#ced4da] rounded bg-[#fff] outline-none"
+          {...register("email")}
+          className="w-full h-[42px] py-[6px] px-[12px] mt-4 leading-[1.5] border border-[#ced4da] rounded bg-[#fff] outline-none"
           type="text"
           placeholder="Enter your email"
         />
+        {errors.email && (
+          <p className="px-2 text-left text-xs italic text-red-500">
+            {errors.email.message}
+          </p>
+        )}
 
         {/* password field */}
-        <div className="relative mb-4">
+        <div className="relative mt-4">
           <input
+            {...register("password")}
             className="w-full h-[42px] py-[6px] px-[12px] leading-[1.5] border border-[#ced4da] rounded bg-[#fff] outline-none"
             type={showPassword ? "text" : "password"}
             placeholder="Enter your password"
@@ -73,19 +87,24 @@ const Register = () => {
             {showPassword ? <BsEyeSlash /> : <BsEye />}
           </button>
         </div>
+        {errors.password && (
+          <p className="px-2 text-left text-xs italic text-red-500">
+            {errors.password.message}
+          </p>
+        )}
 
-        <button className="w-full text-[14px] text-[#fff] bg-[#665dfe] hover:bg-[#4237fe] leading-[1.5] font-semibold py-[14px] px-9 mb-6 outline-none rounded">
+        <button className="w-full text-[14px] text-[#fff] bg-[#665dfe] hover:bg-[#4237fe] leading-[1.5] font-semibold py-[14px] px-9 mt-4 mb-6 outline-none rounded">
           SIGN UP
         </button>
 
         <p className="text-[14px]">
           Already have an account?{" "}
-          <a
+          <Link
             className="text-[14px] text-[#665def] hover:text-[#4237fe] no-underline font-medium"
-            href=""
+            to="/login"
           >
             Sign in.
-          </a>
+          </Link>
         </p>
       </form>
     </div>

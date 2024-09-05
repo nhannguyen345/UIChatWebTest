@@ -66,7 +66,7 @@ const chats = [
 ];
 const ListChat = () => {
   return (
-    <div className="flex-grow py-3 px-4 overflow-y-scroll no-scrollbar">
+    <div className="flex-grow py-3 px-4 overflow-y-scroll no-scrollbar max-sm:mb-[60px]">
       {chats.map((item, idx) => (
         <div
           key={idx}

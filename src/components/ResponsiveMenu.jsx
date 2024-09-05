@@ -9,9 +9,13 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { MdOutlineDarkMode } from "react-icons/md";
 import PopoverMenu from "./PopoverMenu";
 import { useRef, useState } from "react";
-
+import { useDispatch, useSelector } from "react-redux";
+import { setActiveTab } from "../features/menu/menuSlice";
 const ResponsiveMenu = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const dispatch = useDispatch();
+  const menu = useSelector((state) => state.menu.activeTab);
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // state để thực hiện đóng mở menu popover khi click vào avatar
   const avatarRef = useRef(null); // Tạo ref cho avatar, mục đích để giải quyết vấn đề khi click vào bên ngoài menu cụ thể là avatar để đóng menu
   return (
     <div
@@ -28,8 +32,11 @@ const ResponsiveMenu = () => {
       <div className="flex flex-col items-center justify-start gap-11 h-full max-sm:h-fit max-sm:flex-row max-sm:justify-evenly max-sm:w-full">
         <div className="group relative flex justify-center">
           <CgProfile
-            className="text-[24px] cursor-pointer group-hover:text-white text-[#aea9fe]"
-            // style={{ color: "#aea9fe" }}
+            className={
+              "text-[24px] cursor-pointer group-hover:text-white text-[#aea9fe] " +
+              (menu === "profile" ? "text-white" : "")
+            }
+            onClick={() => dispatch(setActiveTab("profile"))}
           />
           {/* Tooltip */}
           <span className="absolute left-9 -top-[3px] z-10 scale-0 rounded bg-gray-900 bg-opacity-95 p-2 text-xs text-center text-white font-semibold group-hover:scale-100 group-hover:min-w-[70px] max-sm:hidden">
@@ -39,8 +46,11 @@ const ResponsiveMenu = () => {
 
         <div className="group relative flex justify-center">
           <IoMdChatboxes
-            className="text-[24px] max-sm:text-[22px] cursor-pointer group-hover:fill-white fill-[#aea9fe]"
-            // style={{ color: "#aea9fe" }}
+            className={
+              "text-[24px] max-sm:text-[22px] cursor-pointer group-hover:fill-white fill-[#aea9fe] " +
+              (menu === "chats" ? "fill-white" : "")
+            }
+            onClick={() => dispatch(setActiveTab("chats"))}
           />
           {/* Tooltip */}
           <span className="absolute left-9 -top-[3px] z-10 scale-0 rounded bg-gray-900 bg-opacity-95 p-2 text-xs text-center text-white font-semibold group-hover:scale-100 group-hover:min-w-[70px] max-sm:hidden">
@@ -50,8 +60,12 @@ const ResponsiveMenu = () => {
 
         <div className="group relative flex justify-center">
           <RiContactsFill
-            className="text-[24px] max-sm:text-[22px] cursor-pointer group-hover:fill-white"
+            className={
+              "text-[24px] max-sm:text-[22px] cursor-pointer group-hover:fill-white " +
+              (menu === "contacts" ? "fill-white" : "")
+            }
             style={{ color: "#aea9fe" }}
+            onClick={() => dispatch(setActiveTab("contacts"))}
           />
           {/* Tooltip */}
           <span className="absolute left-9 -top-[3px] z-10 scale-0 rounded bg-gray-900 bg-opacity-95 p-2 text-xs text-center text-white font-semibold group-hover:scale-100 group-hover:min-w-[70px] max-sm:hidden">
@@ -61,8 +75,12 @@ const ResponsiveMenu = () => {
 
         <div className="group relative flex justify-center max-sm:hidden">
           <PiPhoneCallBold
-            className="text-[24px] max-sm:text-[22px] cursor-pointer group-hover:fill-white"
+            className={
+              "text-[24px] max-sm:text-[22px] cursor-pointer group-hover:fill-white " +
+              (menu === "calls" ? "fill-white" : "")
+            }
             style={{ color: "#aea9fe" }}
+            onClick={() => dispatch(setActiveTab("calls"))}
           />
           {/* Tooltip */}
           <span className="absolute left-9 -top-[3px] z-10 scale-0 rounded bg-gray-900 bg-opacity-95 p-2 text-xs text-center text-white font-semibold group-hover:scale-100 group-hover:min-w-[70px] max-sm:hidden">
@@ -83,8 +101,12 @@ const ResponsiveMenu = () => {
 
         <div className="group relative flex justify-center max-sm:hidden">
           <IoSettingsOutline
-            className="text-[24px] cursor-pointer group-hover:text-white text-[#aea9fe]"
+            className={
+              "text-[24px] cursor-pointer group-hover:text-white text-[#aea9fe] " +
+              (menu === "setting" ? "text-white" : "")
+            }
             // style={{ color: "#aea9fe" }}
+            onClick={() => dispatch(setActiveTab("setting"))}
           />
           {/* Tooltip */}
           <span className="absolute left-9 -top-[3px] z-10 scale-0 rounded bg-gray-900 bg-opacity-95 p-2 text-xs text-center text-white font-semibold group-hover:scale-100 group-hover:min-w-[70px] max-sm:hidden">
