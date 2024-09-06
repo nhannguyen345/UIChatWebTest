@@ -32,7 +32,7 @@ const PopoverMenu = ({ closeMenu, avatarRef }) => {
   return (
     <div
       ref={menuRef}
-      className="absolute -top-44 -left-2 w-[190px] h-fit flex flex-col py-3 bg-white rounded-md shadow-[0_15px_90px_5px_rgba(0,0,0,0.3)] max-sm:left-auto max-sm:right-0 max-sm:-top-40"
+      className="absolute -top-44 -left-2 z-20 w-[190px] h-fit flex flex-col py-3 bg-white rounded-md shadow-[0_15px_90px_5px_rgba(0,0,0,0.3)] max-sm:left-auto max-sm:right-0 max-sm:-top-40"
     >
       <a
         className="px-5 py-1 flex flex-row justify-between items-center text-[#495057] text-[15px] max-sm:text-[14px]"

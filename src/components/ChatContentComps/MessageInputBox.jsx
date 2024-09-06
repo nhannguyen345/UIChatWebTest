@@ -60,7 +60,7 @@ const MessageInputBox = ({
         )}
       </div>
       <textarea
-        className="resize-none flex-1 h-[50px] p-3 rounded-md outline-none font-sans dark:bg-[#2c373d] dark:text-white"
+        className="resize-none flex-1 h-[50px] p-3 rounded-md outline-none font-sans border dark:bg-[#2c373d] dark:text-white"
         placeholder="Type a message"
         type="text"
         value={inputValue}

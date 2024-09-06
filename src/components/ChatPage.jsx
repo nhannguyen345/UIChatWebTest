@@ -3,10 +3,12 @@ import { setShowChat } from "../features/showchat/showchatSlice";
 import WelcomeChatContent from "./WelcomeChatContent";
 import ChatInfo from "./ChatInfo";
 import ChatContent from "./ChatContentComps/ChatContent";
+import ProfileSettingContent from "./ProfileSettingComps/ProfileSettingContent";
 
 const ChatPage = () => {
   const dispatch = useDispatch();
   const showChat = useSelector((state) => state.showchat);
+  const menu = useSelector((state) => state.menu.activeTab);
   console.log(showChat);
   return (
     <div
@@ -24,7 +26,8 @@ const ChatPage = () => {
         Back to SideBar
       </button> */}
       {/* <WelcomeChatContent /> */}
-      <ChatContent />
+      {menu !== "profile" && <ChatContent />}
+      {menu === "profile" && <ProfileSettingContent />}
     </div>
   );
 };

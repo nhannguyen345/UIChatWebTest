@@ -14,7 +14,7 @@ const LeftBar = () => {
   return (
     <div
       className={
-        "flex flex-row max-w-[600px] min-w-[420px] h-screen border-r max-sm:w-screen" +
+        "flex flex-row max-w-[600px] min-w-[440px] h-screen border-r max-sm:w-screen" +
         (showChat
           ? " max-sm:absolute max-sm:left-0 max-sm:animate-hidden-page"
           : " ")
