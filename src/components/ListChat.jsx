@@ -1,3 +1,6 @@
+import { useDispatch, useSelector } from "react-redux";
+import { setShowChat } from "../features/showchat/showchatSlice";
+
 const chats = [
   {
     avatarUrl:
@@ -65,12 +68,15 @@ const chats = [
   },
 ];
 const ListChat = () => {
+  const dispatch = useDispatch();
+  const showChat = useSelector((state) => state.showchat);
   return (
     <div className="flex-grow py-3 px-4 overflow-y-scroll no-scrollbar max-sm:mb-[60px]">
       {chats.map((item, idx) => (
         <div
           key={idx}
           className="py-4 my-3 w-full flex flex-row overflow-hidden justify-evenly border bg-[#fff] rounded-sm shadow-sm transition-all duration-300 ease-in-out hover:border-[#665dfe] cursor-pointer"
+          onClick={() => dispatch(setShowChat(true))}
         >
           {/* Avatar */}
           <div>

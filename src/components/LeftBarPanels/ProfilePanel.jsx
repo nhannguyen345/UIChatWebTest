@@ -12,7 +12,7 @@ import { FiInstagram } from "react-icons/fi";
 
 const ProfilePanel = () => {
   return (
-    <div className="max-w-md w-full flex flex-col mx-auto bg-[#f8f9fa] shadow-lg rounded-lg">
+    <div className="max-w-md w-full flex flex-col bg-[#f8f9fa] shadow-lg rounded-lg">
       <div
         className={
           "sticky top-0 w-[full] px-4 pt-4 pb-4 shadow-sm border-b border-b-[#e0e0e0] bg-[#fff]"
@@ -36,9 +36,9 @@ const ProfilePanel = () => {
           <p className="text-[20px] text-[#495057] mb-[12px] font-medium leading-[1.2]">
             Martin Beter
           </p>
-          <button className="flex items-center gap-1 text-[14px] text-[#495057] px-4 py-2 mx-[6px] border border-[#e5e9f2] rounded-[4px] bg-transparent">
-            <BiLogOut className="inline-block h-[18px] w-[18px]" />
-            <span>Logout</span>
+          <button className="flex items-center gap-1 text-[14px] text-[#495057] px-4 py-2 mx-[6px] border border-[#e5e9f2] hover:border-[#FF0000] group rounded-[4px] bg-transparent">
+            <BiLogOut className="inline-block h-[18px] w-[18px] group-hover:text-[#FF0000]" />
+            <span className="group-hover:text-[#FF0000]">Logout</span>
           </button>
           <div className="absolute top-3 right-3">
             <BsThreeDotsVertical className="text-[#adb5bd] text-[20px]" />

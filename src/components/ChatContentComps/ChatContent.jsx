@@ -2,8 +2,11 @@ import { useState } from "react";
 import HeaderOfChatContent from "./HeaderOfChatContent";
 import MessageContainer from "./MessageContainer";
 import MessageInputBox from "./MessageInputBox";
+import { useDispatch, useSelector } from "react-redux";
 
 const ChatContent = () => {
+  const dispatch = useDispatch();
+  const showInfo = useSelector((state) => state.showinfo);
   const [inputValue, setInputValue] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   const [listChat, setListChat] = useState([]);
@@ -72,7 +75,12 @@ const ChatContent = () => {
     setInputValue("");
   };
   return (
-    <div className="flex flex-col w-full h-screen">
+    <div
+      className={
+        "flex flex-col w-full h-screen max-sm:h-[calc(100vh-64px)] " +
+        (showInfo ? "max-sm:hidden" : "")
+      }
+    >
       <HeaderOfChatContent />
       <MessageContainer listChat={listChat} setListChat={setListChat} />
       <MessageInputBox

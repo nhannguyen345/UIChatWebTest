@@ -46,7 +46,7 @@ const ContactsPanel = () => {
   ];
 
   return (
-    <div className="max-w-md w-full flex flex-col mx-auto bg-white shadow-lg rounded-lg">
+    <div className="max-w-md w-full flex flex-col bg-white shadow-lg rounded-lg">
       {/* <div className="px-4 py-4 bg-gray-50 flex justify-between items-center">
         <h4 className="text-xl font-semibold text-[#495057]">Contacts</h4>
         <button className="p-2 rounded-full bg-[#665dfe] text-white hover:bg-[#4237fe]">

@@ -43,7 +43,7 @@ const HeaderOfChatPanel = () => {
               <BsThreeDotsVertical className="text-[#adb5bd] text-[20px]" />
             )}
             {menu === "contacts" && (
-              <button className="p-2 rounded-full bg-[#665dfe] text-white hover:bg-[#4237fe]">
+              <button className="p-[6px] rounded-full bg-[#665dfe] text-white hover:bg-[#4237fe]">
                 <GoPlus className="text-[16px]" />
               </button>
             )}
@@ -54,8 +54,8 @@ const HeaderOfChatPanel = () => {
       {/* Menu dropdown & Search bar */}
       <div className="w-full mt-3 flex flex-row justify-between">
         {/* Menu dropdown */}
-        {menu === "chats" && <ChatFilter />}
-        {menu === "chats" && <SearchBar />}
+        {(menu === "chats" || menu === "calls") && <ChatFilter />}
+        {(menu === "chats" || menu === "calls") && <SearchBar />}
         {menu === "contacts" && (
           <div className="w-full">
             <div className="relative">

@@ -8,6 +8,7 @@ import ProfileSettingContent from "./ProfileSettingComps/ProfileSettingContent";
 const ChatPage = () => {
   const dispatch = useDispatch();
   const showChat = useSelector((state) => state.showchat);
+  const showInfo = useSelector((state) => state.showinfo);
   const menu = useSelector((state) => state.menu.activeTab);
   console.log(showChat);
   return (
@@ -26,7 +27,12 @@ const ChatPage = () => {
         Back to SideBar
       </button> */}
       {/* <WelcomeChatContent /> */}
-      {menu !== "profile" && <ChatContent />}
+      {menu !== "profile" && (
+        <div className={"flex"}>
+          <ChatContent />
+          <ChatInfo />
+        </div>
+      )}
       {menu === "profile" && <ProfileSettingContent />}
     </div>
   );
