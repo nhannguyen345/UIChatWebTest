@@ -88,12 +88,12 @@ const ListChat = () => {
           </div>
 
           {/* Name & lastMessgae */}
-          <div className="w-9/12 grid grid-cols-8 gap-[2px] overflow-hidden">
-            <h4 className="col-span-6 font-semibold text-[#495057]">
-              {item.username}
-            </h4>
-            <span className="col-span-2 text-[#adb5bd]">{item.time}</span>
-            <p className="col-span-8 whitespace-nowrap overflow-hidden overflow-ellipsis text-[#adb5bd]">
+          <div className="w-9/12 flex flex-col gap-1 overflow-hidden">
+            <div className="flex justify-between">
+              <h4 className="font-semibold text-sm">{item.username}</h4>
+              <span className="text-sm text-[#adb5bd]">{item.time}</span>
+            </div>
+            <p className="w-full whitespace-nowrap overflow-hidden overflow-ellipsis text-sm text-[#adb5bd]">
               {item.lastMessage}
             </p>
           </div>

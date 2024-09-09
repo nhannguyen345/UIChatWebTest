@@ -2,11 +2,23 @@ import { TbBell } from "react-icons/tb";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import ChatFilter from "./ChatFilter";
 import SearchBar from "./SearchBar";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { GoPlus } from "react-icons/go";
 import { IoIosSearch } from "react-icons/io";
+import {
+  openNotificationModal,
+  closeNotificationModal,
+} from "../features/modal/modalSlice";
+import { useState } from "react";
 const HeaderOfChatPanel = () => {
+  // Create state for showing/hiding menu popover menu under three dot
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
+
+  // Get menu (state global) for setting probraly content header
+  const dispatch = useDispatch();
   const menu = useSelector((state) => state.menu.activeTab);
+
+  // Get title function
   const getTitle = () => {
     switch (menu) {
       case "profile":
@@ -35,12 +47,15 @@ const HeaderOfChatPanel = () => {
         <ul className="flex flex-row justify-around items-center gap-4 mr-2">
           <li>
             {(menu === "chats" || menu === "contacts" || menu === "calls") && (
-              <TbBell className="text-[#adb5bd] text-[20px]" />
+              <TbBell
+                className="text-[#adb5bd] text-[20px] cursor-pointer hover:text-[#495057]"
+                onClick={() => dispatch(openNotificationModal())}
+              />
             )}
           </li>
           <li>
             {menu === "chats" && (
-              <BsThreeDotsVertical className="text-[#adb5bd] text-[20px]" />
+              <BsThreeDotsVertical className="text-[#adb5bd] text-[20px] cursor-pointer hover:text-[#495057]" />
             )}
             {menu === "contacts" && (
               <button className="p-[6px] rounded-full bg-[#665dfe] text-white hover:bg-[#4237fe]">

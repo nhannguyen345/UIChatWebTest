@@ -81,7 +81,7 @@ const ProfilePanel = () => {
               </div>
               <MdOutlineEmail className="h-5 w-5 text-[#adb5bd]" />
             </li>
-            <li className="flex items-center gap-2 border-b border-[#e5e9f2] py-[12px] px-[20px] bg-[#fff]">
+            <li className="flex items-center gap-4 border-b border-[#e5e9f2] py-[12px] px-[20px] bg-[#fff]">
               <div className="flex-1 flex flex-col">
                 <p className="text-[13px] leading-[1.5] text-[#adb5bd]">
                   Address
