@@ -3,31 +3,12 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { TfiUnlock } from "react-icons/tfi";
 import { SlLogout } from "react-icons/sl";
 import { useEffect, useRef } from "react";
+import useClickOutside from "../hook/useClickOutside";
 
 const PopoverMenu = ({ closeMenu, avatarRef }) => {
-  const menuRef = useRef();
+  const menuRef = useRef(null);
 
-  useEffect(() => {
-    // Định nghĩa hàm xử lý sự kiện nhấn ra ngoài
-    const handleClickOutside = (event) => {
-      if (
-        menuRef.current &&
-        !menuRef.current.contains(event.target) &&
-        avatarRef.current &&
-        !avatarRef.current.contains(event.target)
-      ) {
-        closeMenu();
-      }
-    };
-
-    // Gán sự kiện nhấn ra ngoài menu
-    document.addEventListener("mousedown", handleClickOutside);
-
-    // Hủy bỏ sự kiện khi component bị hủy
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [closeMenu]);
+  useClickOutside([avatarRef], closeMenu);
 
   return (
     <div
